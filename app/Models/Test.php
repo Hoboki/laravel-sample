@@ -14,6 +14,6 @@ class Test extends Model
     [
         'title',
         'content'
-    ]
+    ];
 
 }
