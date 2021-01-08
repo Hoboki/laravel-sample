@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'テスト投稿')
+@section('title', 'テスト編集')
 @section('content')
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
@@ -41,7 +41,8 @@
                 @endif
             </div>
             <div class="mt-5">
-                <a class="btn btn-secondary" href="{{ route('tests') }}">
+                <a class="btn b
+                btn-secondary" href="{{ route('tests') }}">
                     キャンセル
                 </a>
                 <button type="submit" class="btn btn-primary">

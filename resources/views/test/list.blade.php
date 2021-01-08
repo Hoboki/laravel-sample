@@ -25,7 +25,7 @@
               <td><button type='button' class='btn btn-primary' onclick="location.href='/test/edit/{{ $test->id }}'">編集</button></td>
               <form method="POST" action="{{ route('delete', $test->id) }}" onSubmit="return checkDelete()">
               @csrf
-              <td><button type='submit' class='btn btn-primary' onclick=>削除</button></td>
+              <td><button type='submit' class='btn btn-secondary' onclick=>削除</button></td>
               </form>
           </tr>
           @endforeach
