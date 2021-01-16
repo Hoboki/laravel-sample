@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,5 +34,21 @@ Route::get('/test/{id}', 'TestController@showDetail')->name('show');
 Route::get('/test/edit/{id}', 'TestController@showEdit')->name('edit');
 Route::post('/test/update', 'TestController@exeUpdate')->name('update');
 
-//ブログ削除
+//テスト削除
 Route::post('/test/delete/{id}', 'TestController@exeDelete')->name('delete');
+
+Route::group(['prefix' => 'people'], function () {
+    Route::get('', 'PersonController@index')->name('people.index');
+    Route::group(['prefix' => '{person}'], function () {
+        Route::redirect('', '{person}/posts');
+        Route::group(['prefix' => 'posts'], function () {
+            Route::get('', 'PersonController@show')->name('people.show');
+            Route::group(['prefix' => '{post}'], function () {
+                Route::get('', 'PostController@show')->name('posts.show');
+
+            });
+        });
+    });
+});
+
+Route::get('/posts', 'PostController@index')->name('posts.index');
