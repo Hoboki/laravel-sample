@@ -31,10 +31,3 @@ Route::post('/test/update', 'TestController@exeUpdate')->name('update');
 
 //ブログ削除
 Route::post('/test/delete/{id}', 'TestController@exeDelete')->name('delete');
-
-
-
-
-
-//合計を表示
-Route::get('/sum/{x}/{y}', 'MathController@sum');
