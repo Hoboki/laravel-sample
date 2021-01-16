@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 //テスト一覧画面を表示
 Route::get('/', 'TestController@showList')->name('tests');
 
@@ -31,7 +35,3 @@ Route::post('/test/update', 'TestController@exeUpdate')->name('update');
 
 //ブログ削除
 Route::post('/test/delete/{id}', 'TestController@exeDelete')->name('delete');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
