@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 class PostsTableSeeder extends Seeder
 {
     private $data = [
-        'id', 'company_id', 'title', 'content',  'created_at', 'updated_at'
+        'id', 'company_id', 'title', 'content', 'created_at', 'updated_at'
     ];
     /**
      * Run the database seeds.
