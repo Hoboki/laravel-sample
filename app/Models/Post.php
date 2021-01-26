@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     //
-    protected $guarded = ['id', 'created_at'];
+    protected $guarded = [
+        'id',
+        
+        'created_at'
+    ];
 
     /**
      * 投稿はユーザーに属すため

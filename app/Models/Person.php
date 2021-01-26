@@ -6,8 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Person extends Model
 {
-    //
-    protected $guarded = ['id', 'created_at'];
+    public static function boot()
+    {
+        parent::boot();
+        self::deleting(function($person){
+            $posts = $person->posts;
+            foreach($posts as $post){
+                $post->delete();
+            }
+        });
+    }
+    protected $guarded = ['id','created_at'];
 
     /**
      * 投稿はユーザーに属すため

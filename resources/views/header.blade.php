@@ -5,8 +5,9 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="{{ route('tests') }}">テスト一覧 <span class="sr-only"></span></a>
-      <a class="nav-item nav-link" href="{{ route('create') }}">テスト投稿</a>
+      <a class="nav-item nav-link active" href="{{ route('posts.index') }}">タイムライン<span class="sr-only"></span></a>
+      <a class="nav-item nav-link active" href="{{ route('people.index') }}">ユーザー一覧 <span class="sr-only"></span></a>
+      <a class="nav-item nav-link" href="{{ route('people.create') }}">ユーザー作成</a>
     </div>
   </div>
 </nav>

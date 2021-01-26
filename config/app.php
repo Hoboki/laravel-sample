@@ -175,6 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        App\Providers\PersonServiceProvider::class
+
     ],
 
     /*
@@ -230,3 +232,4 @@ return [
     ],
 
 ];
+

@@ -3,7 +3,11 @@
 @section('content')
 <div class="row">
     <div class="col-md-10 col-md-offset-2">
-        <h2>投稿一覧</h2>
+        <h2>タイムライン</h2>
+        <div class="text-right">
+            <a class="btn btn-outline-primary" href="{{ route('people.index') }}" role="button">ユーザー一覧</a>
+        </div>
+        <br>
         @if (session('err_msg'))
         <p class='text-danger'>
             {{ session('err_msg') }}

@@ -1,9 +1,17 @@
 @extends('layout')
 @section('title', 'ユーザー一覧')
 @section('content')
-<div class="row">
-    <div class="col-md-10 col-md-offset-2">
-        <h2>ユーザー一覧</h2>
+<div class="row col-10">
+    <div class="col-10">
+        <p>{{ Breadcrumbs::render('people') }}</p>
+    </div>
+    <div class="card col-10">
+        <div class="card-header text-center">
+            <h2>ユーザー一覧</h2>
+            <div class="text-right">
+                <a class="btn btn-outline-primary" href="{{ route('posts.index') }}" role="button">タイムライン</a>
+            </div>
+        </div>
         @if (session('err_msg'))
         <p class='text-danger'>
             {{ session('err_msg') }}
@@ -11,24 +19,29 @@
         @endif
         <table class="table table-striped">
             <tr>
-                <th>ユーザー番号</th>
+                <th>ユーザー名</th>
                 <th>投稿</th>
-                <th>登録日</th>
-                <!-- <th></th> -->
             </tr>
             @foreach($people as $person)
+            {{-- <p hidden>{{ $count=0 }}</p> --}}
             <tr>
-                <td>{{ $person->name }}</td>
+                <td><a href="{{ route('people.show', [$person->id]) }}">{{ $person->name }}</a></td>
                 <td>
-                
-                @if ($person->posts != null)
+                    @if ($person->posts != null)
                     @foreach($person->posts as $post)
-                        <a href="/person/{{ $person->id }}">{{ $post->title }}</a>
-                        <br/>
+                    {{--
+                    <p hidden>{{ $count++ }}</p>
+                    @if($count==-1)
+                    <a href="{{ route('people.show', [$person->id]) }}">・・・</a>
+                    @break
+                    @endif
+                    --}}
+                    <a href="{{ route('posts.show', [$person->id, $post->id]) }}">{{ $post->title }}</a>
+                    <br/>
+                    
                     @endforeach
                     @endif
                 </td>
-                <td>{{ $person->created_at }}</td>
 
             </tr>
             @endforeach

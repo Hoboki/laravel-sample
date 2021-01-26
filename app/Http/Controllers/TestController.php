@@ -15,7 +15,7 @@ class TestController extends Controller
      */
     public function showList()
     {
-        $tests = Test::all();
+        $tests = Test::all()->sortByDesc('created_at');
 
         return view('test.list', ['tests' => $tests]);
     }
@@ -74,6 +74,7 @@ class TestController extends Controller
     public function showEdit($id)
     {
         $test = Test::find($id);
+        // dd($test);
         if (is_null($test)) {
             \Session::flash('err_msg', 'データがありません。');
             return redirect(route('tests'));

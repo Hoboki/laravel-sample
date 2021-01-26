@@ -13,7 +13,7 @@
           <tr>
               <th>記事番号</th>
               <th>タイトル</th>
-              <th>日付</th>
+              <th>作成日</th>
               <th></th>
               <th></th>
           </tr>
@@ -21,8 +21,8 @@
           <tr>
               <td>{{ $test->id }}</td>
               <td><a href="/test/{{ $test->id }}">{{ $test->title }}</a></td>
-              <td>{{ $test->updated_at }}</td>
-              <td><button type='button' class='btn btn-primary' onclick="location.href='/test/edit/{{ $test->id }}'">編集</button></td>
+              <td>{{ $test->created_at }}</td>
+              <td><button type='button' class='btn btn-primary' onclick="location.href='/test/{{ $test->id }}/edit'">編集</button></td>
               <form method="POST" action="{{ route('delete', $test->id) }}" onSubmit="return checkDelete()">
               @csrf
               <td><button type='submit' class='btn btn-secondary' onclick=>削除</button></td>
