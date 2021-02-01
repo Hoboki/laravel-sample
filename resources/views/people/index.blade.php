@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title', 'ユーザー一覧')
 @section('content')
-<div class="row col-10">
+<div class="row justify-content-center">
     <div class="col-10">
         <p>{{ Breadcrumbs::render('people') }}</p>
     </div>
@@ -23,19 +23,17 @@
                 <th>投稿</th>
             </tr>
             @foreach($people as $person)
-            {{-- <p hidden>{{ $count=0 }}</p> --}}
+            <p hidden>{{ $count=0 }}</p>
             <tr>
                 <td><a href="{{ route('people.show', [$person->id]) }}">{{ $person->name }}</a></td>
                 <td>
                     @if ($person->posts != null)
                     @foreach($person->posts as $post)
-                    {{--
                     <p hidden>{{ $count++ }}</p>
-                    @if($count==-1)
+                    @if($count==4)
                     <a href="{{ route('people.show', [$person->id]) }}">・・・</a>
                     @break
                     @endif
-                    --}}
                     <a href="{{ route('posts.show', [$person->id, $post->id]) }}">{{ $post->title }}</a>
                     <br/>
                     
