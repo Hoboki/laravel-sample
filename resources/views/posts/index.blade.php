@@ -1,8 +1,8 @@
 @extends('layout')
 @section('title', '投稿一覧')
 @section('content')
-<div class="row">
-    <div class="col-md-10 col-md-offset-2">
+<div class="row justify-content-center">
+    <div class="col-10">
         <h2>タイムライン</h2>
         <div class="text-right">
             <a class="btn btn-outline-primary" href="{{ route('people.index') }}" role="button">ユーザー一覧</a>

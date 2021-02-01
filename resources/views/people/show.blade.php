@@ -3,7 +3,7 @@
 user:{{ $routePerson->name }}
 @endsection
 @section('content')
-<div class='row'>
+<div class='row justify-content-center'>
   <div class='col-md-12'>
     <p>{{ Breadcrumbs::render('person', $person) }}</p>
     <h2>{{ $routePerson->name }}</h2>
