@@ -1,15 +1,16 @@
 @extends('layout')
-@section('title', 'テスト投稿')
+@section('title', '投稿')
 @section('content')
+<div id="app">
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h2>ユーザー作成フォーム</h2>
-        <p>ユーザー名</p><nobr/><h3>{{ $person->name }}</h3>
+        <h2>投稿フォーム</h2>
+        <h3>{{ $person->name }}</h3>
         <form method="POST" action="{{ route('posts.store', [$person->id]) }}" onSubmit="return checkSubmit()">
             @csrf
             <input type="hidden" name='person_id' value='{{ $person->id }}'>
             <div class="form-group">
-                <label for="name">
+                <label for="title">
                     タイトル
                 </label>
                 <input
@@ -18,12 +19,15 @@
                     class="form-control"
                     value="{{ old('title') }}"
                     type="text"
+                    v-model="title"
+                    required
                 >
                 @if ($errors->has('title'))
                     <div class="text-danger">
                         {{ $errors->first('title') }}
                     </div>
                 @endif
+                <div :style="displayObject"> @{{messageTitle}}</div>
                 <label for="content">
                     内容
                 </label>
@@ -32,12 +36,15 @@
                     name="content"
                     class="form-control"
                     rows="4"
+                    v-model="content"
+                    required
                 >{{ old('content') }}</textarea>
                 @if ($errors->has('content'))
                     <div class="text-danger">
                         {{ $errors->first('content') }}
                     </div>
                 @endif
+                <div :style="displayObject"> @{{messageContent}}</div>
             </div>
             <div class="mt-5">
                 <a class="btn btn-secondary" href="{{ route('people.show', [$person->id]) }}">
@@ -50,13 +57,53 @@
         </form>
     </div>
 </div>
+</div>
 <script>
+new Vue({
+    el:"#app",
+    computed:{
+        displayObject(){
+            return {
+                display: "block",
+                color: "red"
+            };
+        }
+    },
+    data:{
+        title: "",
+        content: "",
+        activeTitle: false,
+        activeContent: false,
+        messageTitle: "",
+        messageContent: ""
+    },
+    watch: {
+        title(value) {
+            if (value.length == 0) {
+                this.activeTitle = true;
+                this.messageTitle = "入力してください";
+            } else {
+                this.activeTitle = false;
+                this.messageTitle = "";
+            }
+        },
+        content(value){
+            if (value.length == 0) {
+                this.activeContent = true;
+                this.messageContent = "入力してください";
+            } else {
+                this.activeContent = false;
+                this.messageContent = "";
+            }
+        }
+    }
+});
 function checkSubmit(){
-if(window.confirm('作成してよろしいですか？')){
-    return true;
-} else {
-    return false;
-}
+    if(window.confirm('作成してよろしいですか？')){
+        return true;
+    } else {
+        return false;
+    }
 }
 </script>
 @endsection
