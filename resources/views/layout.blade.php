@@ -15,11 +15,9 @@
     <example-component></example-component>
   </div>
   <script src="{{ mix('js/app.js') }}"></script>
-  <div id="app">
     <div class="container">
     @yield('content')
     </div>
-  </div>
   <footer class="footer bg-dark  fixed-bottom">
   @include('footer')
   </footer>
