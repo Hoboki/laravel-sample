@@ -1,6 +1,7 @@
 @extends('layout')
 @section('title', 'ユーザー投稿')
 @section('content')
+<div id="app">
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h2>ユーザー作成フォーム</h2>
@@ -17,7 +18,8 @@
                     value="{{ old('name') }}"
                     type="text"
                     v-model="name"
-                required>
+                    required
+                >
                 @if ($errors->has('name'))
                     <div class="text-danger">
                         {{ $errors->first('name') }}
@@ -36,14 +38,14 @@
         </form>
     </div>
 </div>
+</div>
 <script>
 new Vue({
     el:"#app",
     computed:{
         displayObject(){
             return {
-                display: this .active ? "block" : "none",
-                "font-weight": "bold",
+                display: this.active ? "block" : "none",
                 color: "red"
             };
         }
@@ -51,7 +53,7 @@ new Vue({
     data:{
         name: "",
         active: false,
-        maeesge: ""
+        message: ""
     },
     watch: {
         name(value) {
@@ -65,11 +67,11 @@ new Vue({
     }
 });
 function checkSubmit(){
-if(window.confirm('作成してよろしいですか？')){
-    return true;
-} else {
-    return false;
-}
+    if(window.confirm('作成してよろしいですか？')){
+        return true;
+    } else {
+        return false;
+    }
 }
 </script>
 @endsection
