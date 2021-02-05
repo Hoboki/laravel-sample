@@ -23,7 +23,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('people', 'PersonController');
 Route::group(['prefix' => 'people'], function () {
-    Route::group(['prefix' => '{personn}'], function () {
+    Route::group(['prefix' => '{person}'], function () {
         Route::redirect('/posts', '/people/{person}');
         // Route::post('/update', 'PersonController@update')->name('people.update');
         Route::resource('posts', 'PostController')->except(['index']);
