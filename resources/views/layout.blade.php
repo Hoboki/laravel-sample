@@ -13,6 +13,9 @@
   <br>
   <div id="ap">
     <example-component></example-component>
+    <like-component>
+      :post-id="{{ json_encode($post->id) }}"
+    </like-component>
   </div>
   <script src="{{ mix('js/app.js') }}"></script>
     <div class="container">

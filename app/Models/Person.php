@@ -27,5 +27,9 @@ class Person extends Model
     {
         return $this->hasMany(Post::class);
     }
+    public function like_posts()
+    {
+        return $this->belongsToMany(Post::class);
+    }
 
 }

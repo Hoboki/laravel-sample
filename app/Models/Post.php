@@ -9,7 +9,6 @@ class Post extends Model
     //
     protected $guarded = [
         'id',
-        
         'created_at'
     ];
 
@@ -21,5 +20,9 @@ class Post extends Model
     public function person()
     {
         return $this->belongsTo(Person::class);
+    }
+    public function like_people()
+    {
+        return $this->belongsToMany(Person::class);
     }
 }
