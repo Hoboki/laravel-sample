@@ -62,7 +62,7 @@ class PersonController extends Controller
      * @author kawahata
      */
     
-    public function edit($person)
+    public function edit(Person $person)
     {
         return view('people.edit', compact('person'));
     }
