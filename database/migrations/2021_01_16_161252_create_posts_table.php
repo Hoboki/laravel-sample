@@ -16,7 +16,7 @@ class CreatePostsTable extends Migration
         if (!Schema::hasTable('posts'))
         {
             Schema::create('posts', function (Blueprint $table) {
-                $table->id();
+                $table->increments('id');
                 $table->integer('person_id');
                 $table->string('title', 127)->comment('タイトル');
                 $table->text('content', 255)->comment('内容');

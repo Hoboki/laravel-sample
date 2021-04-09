@@ -27,6 +27,6 @@ Vue.component('like-component', require('./components/LikeComponent.vue').defaul
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#ap',
-});
+// const app = new Vue({
+//     el: '#ap',
+// });

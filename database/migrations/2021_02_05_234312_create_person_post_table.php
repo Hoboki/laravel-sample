@@ -14,14 +14,17 @@ class CreatePersonPostTable extends Migration
     public function up()
     {
         Schema::create('person_post', function (Blueprint $table) {
-            $table->id();
-            $table->integer('person_id');
-            $table->integer('post_id');
-            $table->foreign('person_id');
-            $table->foreign('post_id');
+            // $table->id();
+            $table->integer('person_id')->unsigned();
+            $table->integer('post_id')->unsigned();
+            $table->foreign('person_id')->references('id')->on('people');
+            $table->foreign('post_id')->references('id')->on('posts');
+
+            $table->primary(['person_id', 'post_id']);
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

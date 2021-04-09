@@ -1947,16 +1947,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['postId'],
-  methods: {
-    submit: function submit(postId) {
-      var url = "/api/posts/${postId}/like";
-      axios.post(url).then(function (response) {})["catch"](function (error) {
-        alert(error);
-      });
-    }
-  }
+  props: {
+    proplike: String
+  },
+  data: function data() {
+    return {
+      like: this.proplike
+    };
+  } // computed:{
+  //     change(like) {
+  //         like = !like;
+  //     }
+  // }
+
 });
 
 /***/ }),
@@ -37598,21 +37604,43 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-primary",
-        attrs: { type: "button" },
-        on: {
-          click: function($event) {
-            return _vm.submit(_vm.postId)
-          }
-        }
-      },
-      [_vm._v("like")]
-    )
-  ])
+  return _c(
+    "div",
+    { staticStyle: { display: "inline-block", _display: "inline" } },
+    [
+      !_vm.like
+        ? _c(
+            "button",
+            {
+              staticClass: "btn btn-outline-primary",
+              attrs: { type: "submit" },
+              on: {
+                click: function($event) {
+                  _vm.like = !_vm.like
+                }
+              }
+            },
+            [_vm._v("like")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.like
+        ? _c(
+            "button",
+            {
+              staticClass: "btn btn-outline-danger",
+              attrs: { type: "submit" },
+              on: {
+                click: function($event) {
+                  _vm.like = !_vm.like
+                }
+              }
+            },
+            [_vm._v("liked!")]
+          )
+        : _vm._e()
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -49815,10 +49843,9 @@ Vue.component('like-component', __webpack_require__(/*! ./components/LikeCompone
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-var app = new Vue({
-  el: '#ap'
-});
+// const app = new Vue({
+//     el: '#ap',
+// });
 
 /***/ }),
 

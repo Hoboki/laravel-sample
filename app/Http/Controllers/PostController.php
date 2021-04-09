@@ -81,16 +81,22 @@ class PostController extends Controller
     //
     /**
      * 投稿詳細
-     * @param App\Models\Person $person
+     * @param App\Models\Person $person | App\Models\Post $post
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      * @author kawahata
      */
     public function show(Person $person, Post $post)
     {
-        
-        return view('posts.show', compact('person', 'post'));
-    }
 
+        $like_person = $post->like_people()->where("person_id", $post->person_id)->first();
+        if($like_person!=null){
+            $like = true;
+        }else{
+            $like = false;
+        }
+        
+        return view('posts.show', compact('person', 'post', 'like'));
+    }
 
     public function destroy(Person $person, Post $post)
     {

@@ -1,13 +1,41 @@
 @extends('layout')
 @section('title', 'posts.show')
 @section('content')
+<div id="posts_show">
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <p>{{ Breadcrumbs::render('post', $person, $post) }}</p>
-    <h2>{{ $post->title }}</h2>
-    @if (session('err_msg'))
+    <h2>
+      {{ $post->title }}
+      <form  method="post" action="{{ route('posts.like', [$post->id]) }}">
+        @csrf
+        @method('PUT')
+        <like-component proplike="{{ $like }}"></like-component>
+      </form>
+      
+      {{-- <div style="display: inline-block; _display: inline;">
+        <form method="post" action="{{ route('posts.like', [$post->id]) }}">
+          @csrf
+          @method('POST')
+          @if($like)
+          <button type='submit' class='btn btn-outline-danger' onclick=>
+            liked!
+          </button>
+          @else
+          <button type='submit' class='btn btn-outline-primary' onclick=>
+            like
+          </button>
+          @endif
+        </form>
+      </div> --}}
+    </h2>
+    @if (session('err_red'))
     <p class='text-danger'>
-      {{ session('err_msg') }}
+      {{ session('err_red') }}
+    </p>
+    @elseif (session('err_blue'))
+    <p class='text-primary'>
+      {{ session('err_blue') }}
     </p>
     @endif
     <span>投稿日：{{ $post->created_at }}</span>
@@ -18,8 +46,8 @@
   </div>
   <div class='text-left'>
     <div class="text-center">
-      <form method="post" action="{{ route('posts.destroy', [$person->id, $post->id]) }}" >
-      <!-- onSubmit="return checkDestroy()" -->
+      <form method="post" action="{{ route('posts.destroy', [$person->id, $post->id]) }}" onSubmit="return checkDestroy()">
+      
         @csrf
         @method('DELETE')
         <a class='btn btn-outline-secondary' href="{{ route('people.show', [$post->person_id]) }}">
@@ -27,7 +55,7 @@
         </a>
         <a class="btn btn-outline-primary" href="{{ route('posts.edit', [$post->person_id, $post->id]) }}" role="button">
           編集
-        </a>  
+        </a>
         <button type='submit' class='btn btn-outline-danger' onclick=>
           削除
         </button>
@@ -35,4 +63,17 @@
     </div>
   </div>
 </div>
+</div>
+<script>
+new Vue({
+  el: '#posts_show',
+})
+function checkDestroy(){
+  if(window.confirm('削除してよろしいですか？')){
+      return true;
+  } else {
+      return false;
+  }
+}
+</script>
 @endsection

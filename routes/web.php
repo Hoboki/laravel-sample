@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
+Route::redirect('/', '/people');
 
 // Route::get(['middleware'=>'auth'], function () {
 
@@ -25,12 +26,13 @@ Route::resource('people', 'PersonController');
 Route::group(['prefix' => 'people'], function () {
     Route::group(['prefix' => '{person}'], function () {
         Route::redirect('/posts', '/people/{person}');
-        // Route::post('/update', 'PersonController@update')->name('people.update');
         Route::resource('posts', 'PostController')->except(['index']);
     });
 });
 
 Route::get('/posts', 'PostController@index')->name('posts.index');
+
+Route::put("/posts/{post}/like", "LikeController@like")->name("posts.like");
 
 
 

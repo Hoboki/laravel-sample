@@ -38,7 +38,7 @@ class PersonController extends Controller
      */
     public function store(PersonRequest $request)
     {
-        dd($request);   
+        // dd($request);   
         $inputs = $request->all();
         
         \DB::beginTransaction();
@@ -130,13 +130,8 @@ class PersonController extends Controller
         }
         
         try {
-            // Post::destroy($posts->id);
-            // dd($posts);
             $person->delete();
-            // $this->destroy($person->id);
-            // dd($person);
         }catch(\Throwable $e){
-            dd($e);
             abort(500);
         }
 

@@ -23,6 +23,6 @@ class Post extends Model
     }
     public function like_people()
     {
-        return $this->belongsToMany(Person::class);
+        return $this->belongsToMany(Person::class)->withPivot('person_id');
     }
 }

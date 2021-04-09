@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-2">
         <h2>投稿編集フォーム</h2>
-        <form method="post" action="{{ route('posts.update', [$person->id, $post->id]) }}"onSubmit="return checkSubmit()">     
+        <form method="post" action="{{ route('posts.update', [$person->id, $post->id]) }}" onSubmit="return checkSubmit()">     
             @csrf
             @method('PUT')
             <input type="hidden" name='id' value='{{ $post->id }}'>
@@ -37,8 +37,7 @@
                 @endif
             </div>
             <div class="mt-5">
-                <a class="btn b
-                btn-secondary" href="{{ route('posts.show', [$person->id, $post->id]) }}">
+                <a class="btn btn-secondary" href="{{ route('posts.show', [$person->id, $post->id]) }}">
                     キャンセル
                 </a>
                 <button type="submit" class="btn btn-primary">
