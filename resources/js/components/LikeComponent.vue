@@ -1,24 +1,46 @@
 <template>
 
 <div style="display: inline-block; _display: inline;">
-    <button type="submit" class="btn btn-outline-primary" v-if="!like" @click="like=!like">like</button>
-    <button type="submit" class="btn btn-outline-danger" v-if="like" @click="like=!like">liked!</button>
+    <button type="submit" class="btn" :class="(isLiked) ? 'btn-danger' : 'btn-primary'" 
+    @click="fetch">like</button>
 </div>
 </template>
 
 <script>
     export default {
         props: {
-            proplike: String
+            propIsLiked: String,
+            propPersonId: String,
+            propPostId: String,
         },
         data() {
-            return { like: this.proplike }
+            return { 
+                isLiked: this.propIsLiked,
+                url: '',
+            }
         },
-        // computed:{
-        //     change(like) {
-        //         like = !like;
-        //     }
-        // }
+        created(){
+
+        },
+
+        methods: {
+            fetch(){
+                if (this.isLiked){
+                    this.url = '/posts/dislike';
+                }else{
+                    this.url = '/posts/like';
+                }
+                axios.post(this.url,{
+                    postId: this.propPostId,
+                    personId: this.propPersonId
+                }).then(response=>{
+                    this.isLiked = !this.isLiked;
+                }).catch(error=>{
+                    console.log(error);
+                })
+            }
+        }
+
         
     }
 </script>

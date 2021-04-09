@@ -1951,18 +1951,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    proplike: String
+    propIsLiked: String,
+    propPersonId: String,
+    propPostId: String
   },
   data: function data() {
     return {
-      like: this.proplike
+      isLiked: this.propIsLiked,
+      url: ''
     };
-  } // computed:{
-  //     change(like) {
-  //         like = !like;
-  //     }
-  // }
+  },
+  created: function created() {},
+  methods: {
+    fetch: function fetch() {
+      var _this = this;
 
+      if (this.isLiked) {
+        this.url = '/posts/dislike';
+      } else {
+        this.url = '/posts/like';
+      }
+
+      axios.post(this.url, {
+        postId: this.propPostId,
+        personId: this.propPersonId
+      }).then(function (response) {
+        _this.isLiked = !_this.isLiked;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -37608,37 +37627,16 @@ var render = function() {
     "div",
     { staticStyle: { display: "inline-block", _display: "inline" } },
     [
-      !_vm.like
-        ? _c(
-            "button",
-            {
-              staticClass: "btn btn-outline-primary",
-              attrs: { type: "submit" },
-              on: {
-                click: function($event) {
-                  _vm.like = !_vm.like
-                }
-              }
-            },
-            [_vm._v("like")]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.like
-        ? _c(
-            "button",
-            {
-              staticClass: "btn btn-outline-danger",
-              attrs: { type: "submit" },
-              on: {
-                click: function($event) {
-                  _vm.like = !_vm.like
-                }
-              }
-            },
-            [_vm._v("liked!")]
-          )
-        : _vm._e()
+      _c(
+        "button",
+        {
+          staticClass: "btn",
+          class: _vm.isLiked ? "btn-danger" : "btn-primary",
+          attrs: { type: "submit" },
+          on: { click: _vm.fetch }
+        },
+        [_vm._v("like")]
+      )
     ]
   )
 }

@@ -7,27 +7,7 @@
     <p>{{ Breadcrumbs::render('post', $person, $post) }}</p>
     <h2>
       {{ $post->title }}
-      <form  method="post" action="{{ route('posts.like', [$post->id]) }}">
-        @csrf
-        @method('PUT')
-        <like-component proplike="{{ $like }}"></like-component>
-      </form>
-      
-      {{-- <div style="display: inline-block; _display: inline;">
-        <form method="post" action="{{ route('posts.like', [$post->id]) }}">
-          @csrf
-          @method('POST')
-          @if($like)
-          <button type='submit' class='btn btn-outline-danger' onclick=>
-            liked!
-          </button>
-          @else
-          <button type='submit' class='btn btn-outline-primary' onclick=>
-            like
-          </button>
-          @endif
-        </form>
-      </div> --}}
+      <like-component prop-is-liked='{{$liked}}' prop-person-id='{{$person->id}}' prop-post-id='{{$post->id}}'></like-component>
     </h2>
     @if (session('err_red'))
     <p class='text-danger'>

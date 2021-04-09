@@ -21,7 +21,11 @@ Route::redirect('/', '/people');
 // Route::get(['middleware'=>'auth'], function () {
 
 // });
-
+Route::group(
+    ['middleware' => ['auth']],
+    function () {
+    }
+);
 Route::resource('people', 'PersonController');
 Route::group(['prefix' => 'people'], function () {
     Route::group(['prefix' => '{person}'], function () {
@@ -32,7 +36,8 @@ Route::group(['prefix' => 'people'], function () {
 
 Route::get('/posts', 'PostController@index')->name('posts.index');
 
-Route::put("/posts/{post}/like", "LikeController@like")->name("posts.like");
+Route::post("/posts/like", "LikeController@like")->name("posts.like");
+Route::post("/posts/dislike", "LikeController@dislike")->name("posts.dislike");
 
 
 
@@ -40,7 +45,7 @@ Route::put("/posts/{post}/like", "LikeController@like")->name("posts.like");
 
 Route::group(['prefix' => 'test'], function () {
     //テスト一覧画面を表示
-    Route::get('', 'TestController@showList')->name('tests');   
+    Route::get('', 'TestController@showList')->name('tests');
     //テスト登録画面を表示
     Route::get('/create', 'TestController@showCreate')->name('create');
 

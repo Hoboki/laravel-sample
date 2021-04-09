@@ -37,15 +37,15 @@ class PostController extends Controller
         $inputs = $request->all();
 
         \DB::beginTransaction();
-        try{
+        try {
             // dd($inputs);
             Post::create($inputs);
             \DB::commit();
-        }catch(\Throwable $e){
+        } catch (\Throwable $e) {
             \DB::rollback();
             abort(500);
         }
-        \Session::flash('err_msg' ,'ユーザーを作成しました。');
+        \Session::flash('err_msg', 'ユーザーを作成しました。');
         return redirect(route('people.show', [$request->person_id]));
     }
 
@@ -61,7 +61,7 @@ class PostController extends Controller
         $inputs = $request->all();
 
         \DB::beginTransaction();
-        try{
+        try {
             $post = Post::find($inputs['id']);
             $post->fill([
                 'title' => $inputs['title'],
@@ -69,13 +69,13 @@ class PostController extends Controller
             ]);
             $post->save();
             \DB::commit();
-        }catch(\Throwable $e){
+        } catch (\Throwable $e) {
             \DB::rollback();
             abort(500);
         }
 
         \Session::flash('err_msg', '投稿を更新しました。');
-        return redirect()->route('posts.show', ['person'=>$post->person_id, 'post'=>$post->id]);
+        return redirect()->route('posts.show', ['person' => $post->person_id, 'post' => $post->id]);
     }
 
     //
@@ -87,15 +87,13 @@ class PostController extends Controller
      */
     public function show(Person $person, Post $post)
     {
-
-        $like_person = $post->like_people()->where("person_id", $post->person_id)->first();
-        if($like_person!=null){
-            $like = true;
-        }else{
-            $like = false;
+        $is_liked = $post->like_people->where('pivot.person_id', $person->id)->first();
+        if (isset($is_liked)) {
+            $liked = true;
+        } else {
+            $liked = false;
         }
-        
-        return view('posts.show', compact('person', 'post', 'like'));
+        return view('posts.show', compact('person', 'post', 'liked'));
     }
 
     public function destroy(Person $person, Post $post)
@@ -103,21 +101,20 @@ class PostController extends Controller
         if (empty($person)) {
             \Session::flash('err_msg', 'ユーザーがいません。');
             return redirect()->route('people.index');
-        }elseif (empty($post)) {
+        } elseif (empty($post)) {
             \Session::flash('err_msg', '投稿がありません。');
             return redirect()->route('people.show', [$person->id]);
         }
-        
+
         try {
             Post::destroy($post->id);
             // $this->destroy($person->id);
             // dd($person);
-        }catch(\Throwable $e){
+        } catch (\Throwable $e) {
             abort(500);
         }
 
         \Session::flash('err_msg', '投稿を削除しました。');
         return redirect(route('people.show', [$person->id]));
     }
-
 }

@@ -18,7 +18,11 @@ class CreatePeopleTable extends Migration
             Schema::create('people', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('name', 127)->comment('ユーザー名');
+                $table->string('email')->unique()->comment('メール');
+                $table->timestamp('email_verified_at')->nuulable();
+                $table->string('password');
                 $table->timestamps();
+                $table->dateTime('deleted_at')->nullable();
             });
         }
     }
