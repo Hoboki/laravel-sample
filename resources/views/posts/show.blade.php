@@ -5,10 +5,10 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <p>{{ Breadcrumbs::render('post', $person, $post) }}</p>
-    <h2>
+    <h1>
       {{ $post->title }}
       <like-component prop-is-liked='{{$liked}}' prop-person-id='{{$person->id}}' prop-post-id='{{$post->id}}'></like-component>
-    </h2>
+    </h1>
     @if (session('err_red'))
     <p class='text-danger'>
       {{ session('err_red') }}
