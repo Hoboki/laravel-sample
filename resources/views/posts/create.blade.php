@@ -20,6 +20,7 @@
                     value="{{ old('title') }}"
                     type="text"
                     v-model="title"
+                    placeholder="タイトルを入力"
                     required
                 >
                 @if ($errors->has('title'))
@@ -37,6 +38,7 @@
                     class="form-control"
                     rows="4"
                     v-model="content"
+                    placeholder="内容を入力"
                     required
                 >{{ old('content') }}</textarea>
                 @if ($errors->has('content'))
