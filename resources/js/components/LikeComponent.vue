@@ -8,7 +8,7 @@
         @leave="leave"
         :css="false"
     >
-        <span style="display: inline-block; _display: inline; color: red;" v-if="pleaseLike">
+        <span style="display: inline-block; _display: inline; color: red;" v-if="pleaseLike && !isLiked">
         Please LIKE!!
         </span>
     </transition>

@@ -39133,7 +39133,7 @@ var render = function() {
           }
         },
         [
-          _vm.pleaseLike
+          _vm.pleaseLike && !_vm.isLiked
             ? _c(
                 "span",
                 {
