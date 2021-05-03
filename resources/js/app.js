@@ -21,6 +21,8 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('like-component', require('./components/LikeComponent.vue').default);
+Vue.component('test-slot-component', require('./components/TestSlotComponent.vue').default);
+Vue.component('test-img-component', require('./components/TestImgComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
