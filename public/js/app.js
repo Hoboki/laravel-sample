@@ -39228,7 +39228,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("img", {
     directives: [{ name: "fallback-image", rawName: "v-fallback-image" }],
-    attrs: { src: __webpack_require__(/*! ./hoboki.jpeg */ "./resources/js/components/hoboki.jpeg"), width: "200", height: "200" }
+    attrs: {
+      src: __webpack_require__(/*! ../../../public/images/hoboki.jpeg */ "./public/images/hoboki.jpeg"),
+      width: "200",
+      height: "200"
+    }
   })
 }
 var staticRenderFns = []
@@ -51430,6 +51434,17 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./public/images/hoboki.jpeg":
+/*!***********************************!*\
+  !*** ./public/images/hoboki.jpeg ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/hoboki.jpeg?a5a7ab1e00246ff778369827f9b0ae7a";
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -51791,17 +51806,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TestSlotComponent_vue_vue_type_template_id_b432f05c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-
-/***/ }),
-
-/***/ "./resources/js/components/hoboki.jpeg":
-/*!*********************************************!*\
-  !*** ./resources/js/components/hoboki.jpeg ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/hoboki.jpeg?a5a7ab1e00246ff778369827f9b0ae7a";
 
 /***/ }),
 
