@@ -10,7 +10,7 @@
       <like-component prop-is-liked='{{$liked}}' prop-person-id='{{$person->id}}' prop-post-id='{{$post->id}}'></like-component>
     </h1>
     <test-scope-component>
-      <h1 slot="123"><a class='btn btn-outline-secondary' href="{{ route('people.show', [$post->person_id]) }}">hello</a></h1>
+      <a slot="123" class='btn btn-outline-secondary' href="{{ route('people.show', [$post->person_id]) }}">hello</a>
       <p slot="456">@{{ textLabel }}</p>
     </test-scope-component>
     
