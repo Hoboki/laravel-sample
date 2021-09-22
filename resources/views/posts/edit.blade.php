@@ -7,7 +7,7 @@
         <form method="post" action="{{ route('posts.update', [$person->id, $post->id]) }}" onSubmit="return checkSubmit()">     
             @csrf
             @method('PUT')
-            <input type="hidden" name='id' value='{{ $post->id }}'>
+            <input type="hidden" name='id' value='{{ $post->id }}' >
             <div class="form-group">
                 <label for="title">
                     タイトル
@@ -18,6 +18,7 @@
                     class="form-control"
                     value="{{ $post->title }}"
                     type="string"
+                    autofocus
                 >
                 @if ($errors->has('title'))
                     <div class="text-danger">

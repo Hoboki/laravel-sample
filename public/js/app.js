@@ -3382,6 +3382,7 @@ __webpack_require__.r(__webpack_exports__);
         personId: this.propPersonId
       }).then(function (response) {
         _this.isLiked = !_this.isLiked;
+        console.log(response);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3445,7 +3446,6 @@ Vue.directive('fallback-image', {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -39291,9 +39291,7 @@ var render = function() {
     _vm._v(" "),
     _c("br"),
     _vm._v(" "),
-    _c("button", [_vm._t("456", [_vm._v(_vm._s(_vm.textLabel))])], 2),
-    _vm._v(" "),
-    _c("a", { attrs: { href: "" } }, [_vm._v("test")])
+    _c("button", [_vm._t("456", [_vm._v(_vm._s(_vm.textLabel))])], 2)
   ])
 }
 var staticRenderFns = []

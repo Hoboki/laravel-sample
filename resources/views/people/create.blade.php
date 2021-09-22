@@ -19,6 +19,7 @@
                     type="text"
                     v-model="name"
                     required
+                    autofocus
                 >
                 @if ($errors->has('name'))
                     <div class="text-danger">

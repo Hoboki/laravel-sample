@@ -21,7 +21,8 @@
                     type="text"
                     v-model="title"
                     placeholder="タイトルを入力"
-                    required
+                    {{-- required --}}
+                    autofocus
                 >
                 @if ($errors->has('title'))
                     <div class="text-danger">
@@ -39,7 +40,8 @@
                     rows="4"
                     v-model="content"
                     placeholder="内容を入力"
-                    required
+                    {{-- required --}}
+                    autofocus
                 >{{ old('content') }}</textarea>
                 @if ($errors->has('content'))
                     <div class="text-danger">

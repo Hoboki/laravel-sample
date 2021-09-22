@@ -69,6 +69,7 @@
                     personId: this.propPersonId
                 }).then(response=>{
                     this.isLiked = !this.isLiked;
+                    console.log(response)
                 }).catch(error=>{
                     console.log(error);
                 })
@@ -78,32 +79,3 @@
         
     }
 </script>
-<!-- <style>
-    .v-enter-active,
-    .v-leave-active {
-    /* アニメーションの時間、イージングなどを設定 */
-    transition: opacity 500ms ease-out;
-    }
-
-    /* フェードイン */
-    .v-enter {
-    /* フェードインの初期状態 */
-    opacity: 0;
-    }
-
-    .v-enter-to {
-    /* フェードインの終了状態 */
-    opacity: 1;
-    }
-
-    /* フェードアウト */
-    .v-leave {
-    /* フェードアウトの初期状態 */
-    opacity: 1;
-    }
-
-    .v-leave-to {
-    /* フェードアウトの終了状態 */
-    opacity: 0;
-    }
-</style> -->

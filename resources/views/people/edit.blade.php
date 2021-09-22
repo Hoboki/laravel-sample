@@ -18,6 +18,7 @@
                     class="form-control"
                     value="{{ $person->name }}"
                     type="string"
+                    autofocus
                 >
                 @if ($errors->has('name'))
                     <div class="text-danger">
