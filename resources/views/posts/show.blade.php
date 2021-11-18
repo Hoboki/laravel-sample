@@ -9,10 +9,10 @@
       {{ $post->title }}
       <like-component prop-is-liked='{{$liked}}' prop-person-id='{{$person->id}}' prop-post-id='{{$post->id}}'></like-component>
     </h1>
-    <test-scope-component>
-      <a slot="123" class='btn btn-outline-secondary' href="{{ route('people.show', [$post->person_id]) }}">hello</a>
-      <p slot="456">@{{ textLabel }}</p>
-    </test-scope-component>
+    {{-- <test-scope-component> --}}
+      {{-- <a slot="123" class='btn btn-outline-secondary' href="{{ route('people.show', [$post->person_id]) }}">hello</a>
+      <p slot="456">@{{ textLabel }}</p> --}}
+    {{-- </test-scope-component> --}}
     
     @if (session('err_red'))
     <p class='text-danger'>
@@ -26,9 +26,9 @@
     <span>投稿日：{{ $post->created_at }}</span>
     <span>更新日：{{ $post->updated_at }}</span>
     <br/>
-    <test-img-component></test-img-component>
+    {{-- <test-img-component></test-img-component> --}}
     <br/>
-    <p>{{ $post->content }}</p>
+    <h3>{{ $post->content }}</h3>
   </div>
   <div class='text-left'>
     <div class="text-center">
