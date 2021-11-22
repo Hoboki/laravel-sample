@@ -9,7 +9,7 @@
         :css="false"
     >
         <span style="display: inline-block; _display: inline; color: red;" v-if="pleaseLike && !isLiked">
-        Please LIKE!!
+        押せ
         </span>
     </transition>
 </div>

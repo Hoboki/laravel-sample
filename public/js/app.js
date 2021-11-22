@@ -39416,7 +39416,7 @@ var render = function() {
         "button",
         {
           staticClass: "btn",
-          class: _vm.isLiked ? "btn-info" : "btn-outline-secondary",
+          class: _vm.isLiked ? "btn-danger" : "btn-outline-secondary",
           attrs: { type: "submit", title: "いいね" },
           on: {
             mouseleave: function($event) {
@@ -39452,7 +39452,7 @@ var render = function() {
                     color: "red"
                   }
                 },
-                [_vm._v("\r\n        Please\r\n        ")]
+                [_vm._v("\r\n        押せ\r\n        ")]
               )
             : _vm._e()
         ]
