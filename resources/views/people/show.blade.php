@@ -42,7 +42,7 @@ user:{{ $routePerson->name }}
       </tr>
       @endforeach
     </table>
-    <a class="btn btn-outline-primary" href="{{ route('people.index') }}" role="button">
+    <a class="btn btn-outline-secondary" href="{{ route('people.index') }}" role="button">
           戻る
     </a>
 </div>
