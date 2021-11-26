@@ -1,3 +1,6 @@
 <div class="container text-center">
-    <span class="text-light">©︎Hoboki</span>
+    <br>
+    <span class="text-light">©︎HOBOKI</span>
+    <br>
+    <br>
 </div>
