@@ -22,7 +22,7 @@ class PersonController extends Controller
 
     /**
      * ユーザー登録画面を表示する
-     * 
+     *
      * @return view
      */
     public function create()
@@ -34,13 +34,13 @@ class PersonController extends Controller
      * 会社を作成
      * @param App\\Http\Requests\Address\PersonRequest $request
      * @return \Illuminate\Routing\Redirector | \Illuminate\Http\RedirectResponse
-     * @author kawahata 
+     * @author kawahata
      */
     public function store(PersonRequest $request)
     {
-        // dd($request);   
+        // dd($request);
         $inputs = $request->all();
-        
+
         \DB::beginTransaction();
         try{
             // dd($inputs);
@@ -61,7 +61,7 @@ class PersonController extends Controller
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      * @author kawahata
      */
-    
+
     public function edit(Person $person)
     {
         return view('people.edit', compact('person'));
@@ -84,7 +84,7 @@ class PersonController extends Controller
 
     /**
      * テストを更新する
-     * 
+     *
      * @return view
      */
     public function update(PersonRequest $request)
@@ -128,7 +128,7 @@ class PersonController extends Controller
             \Session::flash('err_msg', 'データがありません。');
             return redirect()->route('people.index');
         }
-        
+
         try {
             $person->delete();
         }catch(\Throwable $e){
