@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -20,6 +21,6 @@ class UsersTableSeeder extends Seeder
             'remember_token' => Str::random(10)
         ]);
 
-        factory(User::class, 10)->create();
+        factory(User::class, 2)->create();
     }
 }

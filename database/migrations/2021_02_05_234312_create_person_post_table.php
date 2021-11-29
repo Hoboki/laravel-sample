@@ -19,7 +19,6 @@ class CreatePersonPostTable extends Migration
             $table->integer('post_id')->unsigned();
             $table->foreign('person_id')->references('id')->on('people');
             $table->foreign('post_id')->references('id')->on('posts');
-
             $table->primary(['person_id', 'post_id']);
             $table->timestamps();
         });
