@@ -17,49 +17,49 @@ Auth::routes();
 
 Route::redirect('/', '/people');
 
-Route::group(
-    ['middleware' => ['auth']],
-    function () {
-        Route::resource('people', 'PersonController');
-        Route::group(['prefix' => 'people'], function () {
-            Route::group(['prefix' => '{person}'], function () {
-                Route::redirect('/posts', '/people/{person}');
-                Route::resource('posts', 'PostController')->except(['index']);
-            });
+Route::group(['middleware' => ['guest']], function () {
+});
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('people', 'PersonController');
+    Route::group(['prefix' => 'people'], function () {
+        Route::group(['prefix' => '{person}'], function () {
+            Route::redirect('/posts', '/people/{person}');
+            Route::resource('posts', 'PostController')->except(['index']);
         });
+    });
 
-        Route::get('/posts', 'PostController@index')->name('posts.index');
+    Route::get('/posts', 'PostController@index')->name('posts.index');
 
-        Route::post("/posts/like", "LikeController@like")->name("posts.like");
-        Route::post("/posts/dislike", "LikeController@dislike")->name("posts.dislike");
+    Route::post("/posts/like", "LikeController@like")->name("posts.like");
+    Route::post("/posts/dislike", "LikeController@dislike")->name("posts.dislike");
 
 
 
-        //無視
+    //無視
 
-        Route::group(['prefix' => 'test'], function () {
-            //テスト一覧画面を表示
-            Route::get('', 'TestController@showList')->name('tests');
-            //テスト登録画面を表示
-            Route::get('/create', 'TestController@showCreate')->name('create');
+    Route::group(['prefix' => 'test'], function () {
+        //テスト一覧画面を表示
+        Route::get('', 'TestController@showList')->name('tests');
+        //テスト登録画面を表示
+        Route::get('/create', 'TestController@showCreate')->name('create');
 
-            //テスト登録
-            Route::post('/store', 'TestController@exeStore')->name('store');
+        //テスト登録
+        Route::post('/store', 'TestController@exeStore')->name('store');
 
-            Route::post('/update', 'TestController@exeUpdate')->name('update');
-            Route::group(['prefix' => '{id}'], function () {
-                //テスト詳細画面を表示
-                Route::get('', 'TestController@showDetail')->name('show');
+        Route::post('/update', 'TestController@exeUpdate')->name('update');
+        Route::group(['prefix' => '{id}'], function () {
+            //テスト詳細画面を表示
+            Route::get('', 'TestController@showDetail')->name('show');
 
-                //テスト削除
-                Route::post('/delete', 'TestController@exeDelete')->name('delete');
+            //テスト削除
+            Route::post('/delete', 'TestController@exeDelete')->name('delete');
 
-                //テスト編集画面を表示
-                Route::get('/edit', 'TestController@showEdit')->name('edit');
-            });
+            //テスト編集画面を表示
+            Route::get('/edit', 'TestController@showEdit')->name('edit');
         });
+    });
 
-    }
-);
+});
 
 
