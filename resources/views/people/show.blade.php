@@ -18,11 +18,11 @@ user:{{ $routePerson->name }}
         @csrf
         @method('DELETE')
         <a class='btn btn-primary' href="{{ route('posts.create', [$person->id]) }}" role="button">
-          作成する
+          投稿
         </a>
         <a class="btn btn-outline-primary" href="{{ route('people.edit', [$person->id]) }}" role="button">
           編集
-        </a>  
+        </a>
         <button type='submit' class='btn btn-outline-danger' href="{{ route('people.destroy', [$routePerson]) }}" onclick=>
           削除
         </button>
