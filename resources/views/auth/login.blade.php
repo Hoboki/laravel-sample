@@ -75,5 +75,10 @@
         </div>
     </div>
 </div>
+{{-- @if(!!Auth::check()) --}}
+<script type="text/javascript">
+window.onunload = function(){};//Firefoxにも適用する場合には記述する
+history.forward();
+</script>
+{{-- @endif --}}
 @endsection
-
