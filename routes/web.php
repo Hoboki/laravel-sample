@@ -15,12 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::redirect('/', '/people');
-
-Route::group(['middleware' => ['guest']], function () {
-});
+Route::redirect('/', 'posts');
 
 Route::group(['middleware' => ['auth']], function () {
+
     Route::resource('people', 'PersonController');
     Route::group(['prefix' => 'people'], function () {
         Route::group(['prefix' => '{person}'], function () {
