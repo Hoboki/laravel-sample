@@ -17,6 +17,9 @@ Auth::routes();
 
 Route::redirect('/', 'posts');
 
+# 動画再生テスト用URL
+Route::get('videos/stream', 'VideoController@stream');
+
 Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('people', 'PersonController');
